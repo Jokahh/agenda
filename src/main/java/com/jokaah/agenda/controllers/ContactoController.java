@@ -29,7 +29,6 @@ public class ContactoController {
 
     @GetMapping("/contactos/{id}")
     Contacto find(@PathVariable int id) {
-    Contacto find(@PathVariable int id) {
         return contactoService.findById(id);
     }
 
@@ -45,7 +44,6 @@ public class ContactoController {
     }
 
     @DeleteMapping("/contactos/{id}")
-    void delete(@PathVariable int id) {
     void delete(@PathVariable int id) {
         contactoService.deleteById(id);
     }
