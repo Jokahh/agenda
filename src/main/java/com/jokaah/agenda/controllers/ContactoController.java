@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jokaah.agenda.models.Contacto;
@@ -24,18 +26,23 @@ public class ContactoController {
     }
 
     @GetMapping("/contactos/{id}")
-    Contacto findContacto(@PathVariable int id) {
+    Contacto find(@PathVariable int id) {
         return contactoService.findById(id);
     }
 
-    @DeleteMapping("/contactos/{id}")
-    void deleteContacto(int id) {
-        contactoService.deleteById(id);
+    @PostMapping("/contactos")
+    void save(@RequestBody Contacto contacto) {
+        contactoService.save(contacto);
     }
 
-    @PostMapping("/contactos")
-    void guardarContacto(Contacto contacto) {
-        contactoService.save(contacto);
+    @PutMapping("/contactos/{id}")
+    void update(@PathVariable int id, @RequestBody Contacto contacto) {
+        contactoService.update(id, contacto);
+    }
+
+    @DeleteMapping("/contactos/{id}")
+    void delete(@PathVariable int id) {
+        contactoService.deleteById(id);
     }
 
 }

@@ -25,9 +25,8 @@ public class ContactoServiceImpl implements ContactoService {
     public Contacto findById(int id) {
         Optional<Contacto> findById = contactoRepository.findById(id);
         if (findById != null) {
-            return findById(0);
+            return findById.get();
         }
-
         return null;
     }
 
@@ -37,7 +36,9 @@ public class ContactoServiceImpl implements ContactoService {
     }
 
     @Override
-    public void update(Contacto contacto) {
+    public void update(int id, Contacto contacto) {
+        this.findById(id);
+        contacto.setId(id);
         contactoRepository.save(contacto);
     }
 
