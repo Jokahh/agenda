@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jokaah.agenda.models.Contacto;
@@ -27,6 +29,7 @@ public class ContactoController {
 
     @GetMapping("/contactos/{id}")
     Contacto find(@PathVariable int id) {
+    Contacto find(@PathVariable int id) {
         return contactoService.findById(id);
     }
 
@@ -42,6 +45,7 @@ public class ContactoController {
     }
 
     @DeleteMapping("/contactos/{id}")
+    void delete(@PathVariable int id) {
     void delete(@PathVariable int id) {
         contactoService.deleteById(id);
     }
